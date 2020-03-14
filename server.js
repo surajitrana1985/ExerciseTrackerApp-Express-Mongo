@@ -6,7 +6,12 @@ require('dotenv').config();
 
 const port = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGO_CONNECTION_URI, { useNewUrlParser: true }, (error) => {
+// Local MongoDB
+// const mongoURI = process.env.MONGO_CONNECTION_URI;
+
+// Remote MongoDB Atlas
+const mongoURI = process.env.ATLAS_REMOTE_CONNECTION_URI;
+mongoose.connect(mongoURI, { useNewUrlParser: true }, (error) => {
     if (error) {
         throw error;
     } else {
